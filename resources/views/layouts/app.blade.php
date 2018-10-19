@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image: url('https://wallpaper-house.com/data/out/4/wallpaper2you_37293.jpg');">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -70,9 +70,46 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <br>
+
+        <div class="container">
+          <div class="row">
+
+              <div class="col-sm-4">
+                @if (Auth::check())
+                <div class="card text-white bg-dark">
+                  <div class="card-header">Menu</div>
+                  <div class="card-body">
+                    <dl>
+                      <a style="text-decoration: none; color: white;" href="{{ route('home') }}">
+                        <dd>Home</dd>
+                      </a>
+
+                      {{-- Categories --}}
+                      <a style="text-decoration: none; color: white;" href="{{ route('category.create') }}">
+                        <dd>Create a new category</dd>
+                      </a>
+                      <a style="text-decoration: none; color: white;" href="{{ route('categories') }}">
+                        <dd>Categories</dd>
+                      </a>
+
+                      {{-- post --}}
+                      <a style="text-decoration: none; color: white;" href="{{ route('post.create') }}">
+                        <dd>Create a new post</dd>
+                      </a>
+                    </dl>
+                  </div>
+                </div>
+              @endif
+              </div>
+
+            <div class="col-sm-8">
+              @yield('content')
+            </div>
+
+          </div>
+        </div>
+
     </div>
 </body>
 </html>
