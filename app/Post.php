@@ -28,4 +28,16 @@ class Post extends Model
     {
       return asset($value);
     }
+
+
+    public function getTitleAttribute($value)
+    {
+      return ucfirst($value);
+    }
+
+
+    public function getContentAttribute($value)
+    {
+      return ucfirst($value);
+    }
 }
