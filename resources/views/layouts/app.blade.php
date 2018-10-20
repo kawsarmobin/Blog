@@ -12,14 +12,15 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
-    <script type="text/javascript">
+    <script>
 
-    @if (session('status'))
-      <div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {{ session('status') }}
-      </div>
-    @endif
+      @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}")
+      @endif
+
+      @if (Session::has('info'))
+        toastr.info("{{ Session::get('info') }}")
+      @endif
 
     </script>
 
@@ -108,6 +109,12 @@
                       {{-- post --}}
                       <a style="text-decoration: none; color: white;" href="{{ route('post.create') }}">
                         <dd>Create a new post</dd>
+                      </a>
+                      <a style="text-decoration: none; color: white;" href="{{ route('posts') }}">
+                        <dd>All posts</dd>
+                      </a>
+                      <a style="text-decoration: none; color: white;" href="{{ route('posts.trashed') }}">
+                        <dd>All trashed posts</dd>
                       </a>
                     </dl>
                   </div>
