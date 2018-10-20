@@ -38,4 +38,12 @@ Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function() {
   Route::get('posts/trashed', 'PostsController@trashed')->name('posts.trashed');
   Route::get('post/permanently-deleted/{id}', 'PostsController@permanentlyDeleted')->name('post.permanentlyDeleted');
   Route::get('post/restore/{id}', 'PostsController@restore')->name('post.restore');
+
+  // tag...
+  Route::get('tag/create', 'TagsController@create')->name('tag.create');
+  Route::post('tag/store', 'TagsController@store')->name('tag.store');
+  Route::get('tags', 'TagsController@index')->name('tags');
+  Route::get('tag/edit/{id}', 'TagsController@edit')->name('tag.edit');
+  Route::post('tag/update/{id}', 'TagsController@update')->name('tag.update');
+  Route::get('tag/destroy/{id}', 'TagsController@destroy')->name('tag.destroy');
 });

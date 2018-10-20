@@ -116,6 +116,14 @@
                       <a style="text-decoration: none; color: white;" href="{{ route('posts.trashed') }}">
                         <dd>All trashed posts</dd>
                       </a>
+
+                      {{-- Tag --}}
+                      <a style="text-decoration: none; color: white;" href="{{ route('tag.create') }}">
+                        <dd>Create a new tag</dd>
+                      </a>
+                      <a style="text-decoration: none; color: white;" href="{{ route('tags') }}">
+                        <dd>Tags</dd>
+                      </a>
                     </dl>
                   </div>
                 </div>

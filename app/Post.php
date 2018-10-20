@@ -40,4 +40,10 @@ class Post extends Model
     {
       return ucfirst($value);
     }
+
+
+    public function tags()
+    {
+      return $this->belongsToMany('App\Tag');
+    }
 }

@@ -2,7 +2,9 @@
 
 @section('content')
   <div class="card text-white bg-dark">
-    <div class="card-header">Create a new category</div>
+    <div class="card-header text-center">
+      <h5>Create a new category</h5>
+    </div>
 
     @include('includes.errors')
 
