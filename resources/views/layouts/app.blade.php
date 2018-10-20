@@ -11,6 +11,17 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script type="text/javascript">
+
+    @if (session('status'))
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ session('status') }}
+      </div>
+    @endif
+
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -18,6 +29,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 </head>
 <body style="background-image: url('https://wallpaper-house.com/data/out/4/wallpaper2you_37293.jpg');">
     <div id="app">
