@@ -39,6 +39,21 @@
         </div>
 
         <div class="form-group row">
+          <label class="col-md-3 text-md-right form-check-label">Select tags</label>
+          <div class="col-md-7">
+            @if ($tags)
+              @foreach ($tags as $tag)
+                <ul>
+                  <label class="form-check-label">
+                    <li><input class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}"> {{ $tag->tag }}</li>
+                  </label>
+                </ul>
+              @endforeach
+            @endif
+          </div>
+        </div>
+
+        <div class="form-group row">
           <label class="col-md-3 col-form-label text-md-right">Content</label>
           <div class="col-md-7">
             <textarea class="form-control" name="content" rows="4" cols="80">{{ old('content') }}</textarea>

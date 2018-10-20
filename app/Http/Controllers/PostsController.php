@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use App\Tag;
 use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class PostsController extends Controller
         }
 
         return view('admin.posts.create')
-                ->with('categories', $categories);
+                ->with('categories', $categories)
+                ->with('tags', Tag::all());
     }
 
     /**
@@ -67,6 +69,8 @@ class PostsController extends Controller
         'slug' => str_slug($request->title),
       ]);
 
+      $post->tags()->attach($request->tags);
+
       Session::flash('success', 'Post create successfully.');
 
       return redirect()->back();
@@ -93,7 +97,8 @@ class PostsController extends Controller
     {
       return view('admin.posts.edit')
               ->with('categories', Category::all())
-              ->with('post', Post::find($id));
+              ->with('post', Post::find($id))
+              ->with('tags', Tag::all());
     }
 
     /**
@@ -125,6 +130,8 @@ class PostsController extends Controller
       $post->category_id = $request->category_id;
       $post->title = $request->title;
       $post->content = $request->content;
+
+      $post->tags()->sync($request->tags);
 
       if ($post->save()) {
         Session::flash('success', 'Post update successfully.');

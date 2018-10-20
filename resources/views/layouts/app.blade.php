@@ -88,7 +88,7 @@
         <div class="container">
           <div class="row">
 
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 @if (Auth::check())
                 <div class="card text-white bg-dark">
                   <div class="card-header">Menu</div>
@@ -96,41 +96,41 @@
                     <dl>
                       <a style="text-decoration: none; color: white;" href="{{ route('home') }}">
                         <dd>Home</dd>
-                      </a>
+                      </a> <hr style="padding: 0; margin: 0">
 
                       {{-- Categories --}}
                       <a style="text-decoration: none; color: white;" href="{{ route('category.create') }}">
                         <dd>Create a new category</dd>
-                      </a>
+                      </a> <hr style="padding: 0; margin: 0">
                       <a style="text-decoration: none; color: white;" href="{{ route('categories') }}">
                         <dd>Categories</dd>
-                      </a>
+                      </a> <hr style="padding: 0; margin: 0">
 
                       {{-- post --}}
                       <a style="text-decoration: none; color: white;" href="{{ route('post.create') }}">
                         <dd>Create a new post</dd>
-                      </a>
+                      </a> <hr style="padding: 0; margin: 0">
                       <a style="text-decoration: none; color: white;" href="{{ route('posts') }}">
                         <dd>All posts</dd>
-                      </a>
+                      </a> <hr style="padding: 0; margin: 0">
                       <a style="text-decoration: none; color: white;" href="{{ route('posts.trashed') }}">
                         <dd>All trashed posts</dd>
-                      </a>
+                      </a> <hr style="padding: 0; margin: 0">
 
                       {{-- Tag --}}
                       <a style="text-decoration: none; color: white;" href="{{ route('tag.create') }}">
                         <dd>Create a new tag</dd>
-                      </a>
+                      </a> <hr style="padding: 0; margin: 0">
                       <a style="text-decoration: none; color: white;" href="{{ route('tags') }}">
                         <dd>Tags</dd>
-                      </a>
+                      </a> <hr style="padding: 0; margin: 0">
                     </dl>
                   </div>
                 </div>
               @endif
               </div>
 
-            <div class="col-sm-8">
+            <div class="col-sm-9">
               @yield('content')
             </div>
 
