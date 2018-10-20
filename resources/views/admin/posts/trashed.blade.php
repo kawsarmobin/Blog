@@ -19,7 +19,7 @@
         <td>Destroy</td>
       </thead>
       <tbody>
-        @if ($posts)
+        @if ($posts->count() > 0)
           @foreach ($posts as $post)
             <tr>
               <td><img src="{{ $post->featured }}" alt="{{ $post->title }}" width="50px"></td>
@@ -44,6 +44,10 @@
               </td>
             </tr>
           @endforeach
+        @else
+          <tr>
+            <th colspan="5" class="text-center">No trashed post</th>
+          </tr>
         @endif
       </tbody>
     </table>

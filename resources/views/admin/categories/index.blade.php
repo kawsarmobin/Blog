@@ -17,7 +17,7 @@
         <td>Deleting</td>
       </thead>
       <tbody>
-        @if ($categories)
+        @if ($categories->count() > 0)
           @foreach ($categories as $category)
             <tr>
               <td>{{ ucwords($category->name) }}</td>
@@ -33,6 +33,10 @@
               </td>
             </tr>
           @endforeach
+        @else
+          <tr>
+            <th colspan="5" class="text-center">No categories yet...</th>
+          </tr>
         @endif
       </tbody>
     </table>
