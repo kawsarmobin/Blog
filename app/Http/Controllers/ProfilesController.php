@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
+use Auth;
 use Session;
 use Illuminate\Http\Request;
 
-class TagsController extends Controller
+class ProfilesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TagsController extends Controller
      */
     public function index()
     {
-        return view('admin.tags.index')
-                ->with('tags', Tag::all());
+        return view('admin.users.profile')
+                ->with('user', Auth::user());
     }
 
     /**
@@ -26,7 +26,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-      return view('admin.tags.create');
+        //
     }
 
     /**
@@ -37,19 +37,7 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-          'tag' => 'required|max:255',
-        ]);
-
-        $tag = new Tag();
-
-        $tag->tag = $request->tag;
-
-        if ($tag->save()) {
-          Session::flash('success', 'Tag create successfully');
-        }
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -71,8 +59,7 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.tags.edit')
-                ->with('tag', Tag::find($id));
+        //
     }
 
     /**
@@ -82,21 +69,44 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-      $this->validate($request, [
-        'tag' => 'required|max:255',
-      ]);
+        $this->validate($request, [
+          'name' => 'required',
+          'email' => 'required|email',
+          'facebook' => 'required|url',
+          'youtube' => 'required|url',
+        ]);
 
-      $tag = Tag::find($id);
+        $user = Auth::user();
 
-      $tag->tag = $request->tag;
+        if ($request->hasFile('avatar')) {
+          $avatar = $request->avatar;
+          $new_avatar_name = time().$avatar->getClientOriginalName();
+          $avatar->move('uploads/avatars', $new_avatar_name);
+          $user->profile->avatar  = 'uploads/avatars/'.$new_avatar_name;
 
-      if ($tag->save()) {
-        Session::flash('success', 'Tag update successfully');
-      }
+          $user->profile->save();
+        }
 
-      return redirect()->route('tags');
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->profile->facebook = $request->facebook;
+        $user->profile->youtube = $request->youtube;
+        $user->profile->about = $request->about;
+
+        $user->save();
+        $user->profile->save();
+
+        if ($request->has('password')) {
+          $user->password = bcrypt($request->password);
+
+          $user->save();
+        }
+
+        Session::flash('success', 'Account profile updated.');
+
+        return redirect()->back();
     }
 
     /**
@@ -107,16 +117,6 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::find($id);
-
-        foreach ($tag->posts as $post) {
-          $post->forceDelete();
-        }
-
-        if ($tag->delete()) {
-          Session::flash('success', 'Tag delete successfully');
-        }
-
-        return redirect()->back();
+        //
     }
 }

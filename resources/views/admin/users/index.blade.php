@@ -25,19 +25,21 @@
               <td>{{ $user->name }}</td>
               <td>
                 @if ($user->admin)
-                  <a class="btn btn-sm btn-danger" href="{!! route('user.not.admin', $user->id) !!} ">
+                  <a class="btn btn-sm btn-danger" href="{!! route('user.not.admin', $user->id) !!}">
                     Remove permissions
                   </a>
                 @else
-                  <a class="btn btn-sm btn-success" href="{!! route('user.admin', $user->id) !!} ">
+                  <a class="btn btn-sm btn-success" href="{!! route('user.admin', $user->id) !!}">
                     Make admin
                   </a>
                 @endif
               </td>
               <td>
-                <a class="btn btn-sm btn-danger" href="">
-                  Delete
-                </a>
+                @if (Auth::id() !== $user->id)
+                  <a class="btn btn-sm btn-danger" href="{!! route('user.destroy', $user->id) !!}">
+                    Delete
+                  </a>
+                @endif
               </td>
             </tr>
           @endforeach

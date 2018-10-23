@@ -108,12 +108,25 @@
                         </a> <hr style="padding: 0; margin: 0">
                       @endif
 
+                      {{-- Profile update --}}
+                      <a style="text-decoration: none; color: white;" href="{{ route('user.profile') }}">
+                        <dd>My profile</dd>
+                      </a> <hr style="padding: 0; margin: 0">
+
                       {{-- Categories --}}
                       <a style="text-decoration: none; color: white;" href="{{ route('category.create') }}">
                         <dd>Create a new category</dd>
                       </a> <hr style="padding: 0; margin: 0">
                       <a style="text-decoration: none; color: white;" href="{{ route('categories') }}">
                         <dd>Categories</dd>
+                      </a> <hr style="padding: 0; margin: 0">
+
+                      {{-- Tag --}}
+                      <a style="text-decoration: none; color: white;" href="{{ route('tag.create') }}">
+                        <dd>Create a new tag</dd>
+                      </a> <hr style="padding: 0; margin: 0">
+                      <a style="text-decoration: none; color: white;" href="{{ route('tags') }}">
+                        <dd>Tags</dd>
                       </a> <hr style="padding: 0; margin: 0">
 
                       {{-- post --}}
@@ -125,14 +138,6 @@
                       </a> <hr style="padding: 0; margin: 0">
                       <a style="text-decoration: none; color: white;" href="{{ route('posts.trashed') }}">
                         <dd>All trashed posts</dd>
-                      </a> <hr style="padding: 0; margin: 0">
-
-                      {{-- Tag --}}
-                      <a style="text-decoration: none; color: white;" href="{{ route('tag.create') }}">
-                        <dd>Create a new tag</dd>
-                      </a> <hr style="padding: 0; margin: 0">
-                      <a style="text-decoration: none; color: white;" href="{{ route('tags') }}">
-                        <dd>Tags</dd>
                       </a> <hr style="padding: 0; margin: 0">
                     </dl>
                   </div>
