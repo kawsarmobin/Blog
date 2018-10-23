@@ -98,6 +98,16 @@
                         <dd>Home</dd>
                       </a> <hr style="padding: 0; margin: 0">
 
+                      @if (Auth::user()->admin)
+                        {{-- Users --}}
+                        <a style="text-decoration: none; color: white;" href="{{ route('user.create') }}">
+                          <dd>New user</dd>
+                        </a> <hr style="padding: 0; margin: 0">
+                        <a style="text-decoration: none; color: white;" href="{{ route('users') }}">
+                          <dd>Users</dd>
+                        </a> <hr style="padding: 0; margin: 0">
+                      @endif
+
                       {{-- Categories --}}
                       <a style="text-decoration: none; color: white;" href="{{ route('category.create') }}">
                         <dd>Create a new category</dd>

@@ -46,4 +46,13 @@ Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function() {
   Route::get('tag/edit/{id}', 'TagsController@edit')->name('tag.edit');
   Route::post('tag/update/{id}', 'TagsController@update')->name('tag.update');
   Route::get('tag/destroy/{id}', 'TagsController@destroy')->name('tag.destroy');
+
+  // tag...
+  Route::get('user/create', 'UsersController@create')->name('user.create');
+  Route::post('user/store', 'UsersController@store')->name('user.store');
+  Route::get('users', 'UsersController@index')->name('users');
+
+  // admin permissions...
+  Route::get('user/admin/{id}', 'UsersController@admin')->name('user.admin');
+  Route::get('user/not-admin/{id}', 'UsersController@notAdmin')->name('user.not.admin');
 });

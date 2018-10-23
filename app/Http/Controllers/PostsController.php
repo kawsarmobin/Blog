@@ -169,9 +169,10 @@ class PostsController extends Controller
     {
       $post = Post::withTrashed()->where('id', $id)->first();
 
-      $post->forceDelete();
-
-      Session::flash('success', 'Post permanently deleted.');
+      if ($post->forceDelete()) {
+        // unlink('uploads/posts/' . $post->getOriginal('featured'));
+        Session::flash('success', 'Post permanently deleted.');
+      }
 
       return redirect()->back();
     }
