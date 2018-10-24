@@ -56,7 +56,7 @@
         <div class="form-group row">
           <label class="col-md-3 col-form-label text-md-right">Content</label>
           <div class="col-md-7">
-            <textarea class="form-control" name="content" rows="4" cols="80">{{ old('content') }}</textarea>
+            <textarea class="form-control" id="summernote" name="content" rows="4" cols="80">{{ old('content') }}</textarea>
           </div>
         </div>
 
@@ -69,4 +69,21 @@
       </form>
     </div>
   </div>
+@endsection
+
+
+@section('styles')
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+@endsection
+
+
+@section('scripts')
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+  <script>
+
+    $(document).ready(function() {
+      $('#summernote').summernote();
+    });
+
+  </script>
 @endsection

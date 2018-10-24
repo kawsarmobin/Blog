@@ -12,6 +12,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script> --}}
     <script>
 
       @if (Session::has('success'))
@@ -31,6 +33,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    
+    @yield('styles')
+
 </head>
 <body style="background-image: url('https://wallpaper-house.com/data/out/4/wallpaper2you_37293.jpg');">
     <div id="app">
@@ -153,5 +158,11 @@
         </div>
 
     </div>
+
+
+    @yield('scripts')
+
+
+
 </body>
 </html>
