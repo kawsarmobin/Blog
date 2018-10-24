@@ -33,7 +33,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
-    
+
     @yield('styles')
 
 </head>
@@ -143,6 +143,11 @@
                       </a> <hr style="padding: 0; margin: 0">
                       <a style="text-decoration: none; color: white;" href="{{ route('posts.trashed') }}">
                         <dd>All trashed posts</dd>
+                      </a> <hr style="padding: 0; margin: 0">
+
+                      {{-- settings --}}
+                      <a style="text-decoration: none; color: white;" href="{{ route('settings') }}">
+                        <dd>Settings</dd>
                       </a> <hr style="padding: 0; margin: 0">
                     </dl>
                   </div>
