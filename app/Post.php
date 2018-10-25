@@ -11,7 +11,7 @@ class Post extends Model
 
 
     protected $fillable = [
-      'category_id', 'title', 'featured', 'content', 'slug',
+      'category_id', 'title', 'featured', 'content', 'slug', 'user_id',
     ];
 
 
@@ -45,5 +45,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Tag');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

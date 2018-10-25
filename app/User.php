@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
       return ucwords($value);
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
 }
