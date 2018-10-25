@@ -11,15 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+// frontend area...
 Route::get('/', 'FrontendController@index')->name('index');
+Route::get('/post/{slug}', 'FrontendController@singlePost')->name('post.single');
+Route::get('/category/{id}', 'FrontendController@category')->name('category.single');
+Route::get('/tag/{id}', 'FrontendController@tag')->name('tag.single');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::group(['prefix' => 'admin', 'middleware'=> 'auth'], function() {
   // category...

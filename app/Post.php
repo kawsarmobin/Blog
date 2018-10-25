@@ -38,12 +38,12 @@ class Post extends Model
 
     public function getContentAttribute($value)
     {
-      return ucfirst($value);
+        return ucfirst($value);
     }
 
 
     public function tags()
     {
-      return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Tag');
     }
 }
